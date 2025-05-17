@@ -34,7 +34,7 @@ pipeline{
         }
         stage('DeployToProd'){
             input{
-                message: "Ready to deploy in prod ?"
+                message "Ready to deploy in prod ?"
                 ok 'yes'
                 submitter 'ikkurthi24568'
             }
