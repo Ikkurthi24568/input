@@ -1,0 +1,46 @@
+pipeline{
+    agent any
+    stages {
+        stage('Build'){
+            steps{
+                echo "building app"
+            }
+        }
+        stage('Sonar'){
+            steps{
+                echo "Scaning app"
+            }
+        }
+         stage('DockerBuild'){
+            steps{
+                echo "Building container app"
+            }
+        }
+         stage('Dockerpush'){
+            steps{
+                echo "Pushing the image"
+            }
+        }
+         stage('DeployToDev'){
+            steps{
+                echo "Deploying the application to Test env"
+            }
+        }
+        stage('DeployToStage'){
+
+            steps{
+                echo "Deploying the application to Stage env"
+            }
+        }
+        stage('DeployToProd'){
+            input{
+                message: "Ready to deploy in prod ?"
+                ok 'yes'
+                submitter 'ikkurthi24568'
+            }
+            steps{
+                echo "Deploying the application to prod"
+            }
+        }
+    }
+}
